@@ -3,9 +3,9 @@
   connection: local
   vars:
     ami_id: ami-09c813fb71547fc4f
-    sg_id: sg-07c8acf3fa6b923fa # replace with your SG ID
-    zone_id: "Z0948150OFPSYTNVYZOY" # replace with your ID
-    domain_name: "daws86s.fun"
+    sg_id: sg-0fbe5faf5941bcdd9 # replace with your SG ID
+    zone_id: "Z029822632UATB6PPFGA9" # replace with your ID
+    domain_name: "devops86s.site"
     # we can pass instances through command line using -e
     # instances: 
     # - mongodb
@@ -42,7 +42,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ item.item }}.{{ domain_name }}" # mongodb.daws86s.fun
+      record: "{{ item.item }}.{{ domain_name }}" # mongodb.devops86s.site
       type: A
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
@@ -54,7 +54,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ domain_name }}" # daws86s.fun
+      record: "{{ domain_name }}" # devops86s.site
       type: A
       ttl: 1
       value: "{{ item.instances[0].public_ip_address }}"
